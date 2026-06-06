@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar — MochiFocus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/theme.js"></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation" aria-label="Navigasi utama">
+      <div class="navbar__brand">MochiFocus</div>
+      <ul class="navbar__links" role="list">
+        <li><a href="index.html" class="navbar__link">Dashboard</a></li>
+        <li><a href="stats.html" class="navbar__link">Stats</a></li>
+        <li>
+          <a
+            href="calendar.html"
+            class="navbar__link navbar__link--active"
+            aria-current="page"
+            >Calendar</a
+          >
+        </li>
+        <li><a href="settings.html" class="navbar__link">Settings</a></li>
+      </ul>
+      <div class="navbar__actions">
+        <button
+          class="navbar__icon-btn"
+          id="navbar-darkmode-btn"
+          aria-pressed="false"
+          title="Mode gelap"
+          aria-label="Toggle mode gelap"
+        >
+          <svg
+            class="icon-moon"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <svg
+            class="icon-sun"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+            style="display: none"
+          >
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+        </button>
+        <button class="navbar__icon-btn" aria-label="Notifikasi">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+        </button>
+        <button class="navbar__avatar" aria-label="Profil pengguna"></button>
+      </div>
+    </nav>
+
+    <!-- BG BLOBS -->
+    <div class="bg-blob bg-blob--green" aria-hidden="true"></div>
+    <div class="bg-blob bg-blob--pink" aria-hidden="true"></div>
+
+    <!-- PAGE LAYOUT -->
+    <div class="cal-page">
+      <!-- ── LEFT COLUMN ── -->
+      <div class="cal-left">
+        <!-- Month heading + nav -->
+        <div class="cal-month-header">
+          <div>
+            <h1 class="cal-month-header__title" id="cal-month-title">
+              Juni 2026
+            </h1>
+            <p class="cal-month-header__sub">
+              Lacak kemajuan manismu bulan ini! ✨
+            </p>
+          </div>
+          <div class="cal-month-header__nav">
+            <button
+              class="cal-nav-btn"
+              id="cal-prev"
+              aria-label="Bulan sebelumnya"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              class="cal-nav-btn"
+              id="cal-next"
+              aria-label="Bulan berikutnya"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Calendar grid -->
+        <div class="cal-card" role="grid" aria-label="Kalender">
+          <!-- Day-of-week header -->
+          <div class="cal-grid__header" role="row">
+            <span role="columnheader" aria-label="Minggu">MIN</span>
+            <span role="columnheader" aria-label="Senin">SEN</span>
+            <span role="columnheader" aria-label="Selasa">SEL</span>
+            <span role="columnheader" aria-label="Rabu">RAB</span>
+            <span role="columnheader" aria-label="Kamis">KAM</span>
+            <span role="columnheader" aria-label="Jumat">JUM</span>
+            <span role="columnheader" aria-label="Sabtu">SAB</span>
+          </div>
+          <!-- Day cells — rendered by JS -->
+          <div class="cal-grid__body" id="cal-grid-body" role="rowgroup"></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="cal-legend" aria-label="Keterangan warna">
+          <span class="cal-legend__item">
+            <span class="cal-legend__dot cal-legend__dot--done"></span>SELESAI
+          </span>
+          <span class="cal-legend__item">
+            <span class="cal-legend__dot cal-legend__dot--focus"></span>FOKUS
+          </span>
+          <span class="cal-legend__item">
+            <span class="cal-legend__dot cal-legend__dot--achieve"></span
+            >PENCAPAIAN
+          </span>
+        </div>
+      </div>
+
+      <!-- ── RIGHT COLUMN ── -->
+      <div class="cal-right">
+        <!-- Agenda Hari Ini -->
+        <section class="card cal-agenda-card" aria-labelledby="agenda-heading">
+          <div class="cal-agenda-card__header">
+            <h2 id="agenda-heading" class="cal-agenda-card__title">
+              Agenda Hari Ini
+            </h2>
+            <button
+              class="cal-add-btn"
+              id="agenda-add-btn"
+              aria-label="Tambah agenda"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Agenda list — rendered by JS -->
+          <ul
+            class="cal-agenda-list"
+            id="agenda-list"
+            aria-label="Daftar agenda hari ini"
+          ></ul>
+
+          <!-- Motivational quote -->
+          <div class="cal-quote" id="cal-quote" aria-live="polite">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            <span id="cal-quote-text"
+              >"Kamu sudah menyelesaikan 80% rencana mingguanmu. Hebat!"</span
+            >
+          </div>
+        </section>
+
+        <!-- Statistik Produktivitas -->
+        <section
+          class="card cal-stats-card"
+          aria-labelledby="cal-stats-heading"
+        >
+          <h2 id="cal-stats-heading" class="cal-stats-card__title">
+            Statistik Produktivitas
+          </h2>
+          <p class="cal-stats-card__sub" id="cal-stats-sub">
+            Minggu ini sangat produktif!
+          </p>
+          <div
+            class="cal-bar-chart"
+            aria-label="Grafik produktivitas mingguan"
+            role="img"
+          >
+            <div class="cal-bar-chart__bars" id="cal-stats-bars"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Add Agenda Modal -->
+    <div
+      class="modal-overlay"
+      id="agenda-modal-overlay"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div class="modal">
+        <div class="modal__header">
+          <h3 id="modal-title" class="modal__title">Tambah Agenda</h3>
+          <button
+            class="modal__close"
+            id="modal-close"
+            aria-label="Tutup modal"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <form class="modal__form" id="agenda-form">
+          <div class="modal__field">
+            <label class="modal__label" for="agenda-title-input"
+              >Judul Agenda</label
+            >
+            <input
+              class="input"
+              type="text"
+              id="agenda-title-input"
+              placeholder="Contoh: Deep Work: Desain UI"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <div class="modal__field-row">
+            <div class="modal__field">
+              <label class="modal__label" for="agenda-start-input">Mulai</label>
+              <input
+                class="input"
+                type="time"
+                id="agenda-start-input"
+                value="09:00"
+                required
+              />
+            </div>
+            <div class="modal__field">
+              <label class="modal__label" for="agenda-end-input">Selesai</label>
+              <input
+                class="input"
+                type="time"
+                id="agenda-end-input"
+                value="10:00"
+                required
+              />
+            </div>
+          </div>
+          <div class="modal__field">
+            <label class="modal__label">Kategori</label>
+            <div
+              class="modal__cats"
+              id="modal-cats"
+              role="radiogroup"
+              aria-label="Pilih kategori"
+            >
+              <button
+                type="button"
+                class="modal__cat modal__cat--green modal__cat--active"
+                data-cat="fokus"
+                aria-pressed="true"
+              >
+                Fokus
+              </button>
+              <button
+                type="button"
+                class="modal__cat modal__cat--purple"
+                data-cat="meeting"
+                aria-pressed="false"
+              >
+                Meeting
+              </button>
+              <button
+                type="button"
+                class="modal__cat modal__cat--pink"
+                data-cat="lainnya"
+                aria-pressed="false"
+              >
+                Lainnya
+              </button>
+            </div>
+          </div>
+          <button class="btn btn--add-todo modal__submit" type="submit">
+            Simpan Agenda
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Floating add button (mobile) -->
+    <button class="cal-fab" id="cal-fab" aria-label="Tambah agenda baru">
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="5" y1="12" x2="19" y2="12" />
+      </svg>
+    </button>
+
+    <script src="js/calendar.js"></script>
+  </body>
+</html>

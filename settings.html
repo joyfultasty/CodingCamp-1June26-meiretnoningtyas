@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings — MochiFocus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/theme.js"></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation" aria-label="Navigasi utama">
+      <div class="navbar__brand" id="navbar-brand">MochiFocus</div>
+      <ul class="navbar__links" role="list">
+        <li><a href="index.html" class="navbar__link">Dashboard</a></li>
+        <li><a href="stats.html" class="navbar__link">Stats</a></li>
+        <li><a href="calendar.html" class="navbar__link">Calendar</a></li>
+        <li>
+          <a
+            href="settings.html"
+            class="navbar__link navbar__link--active"
+            aria-current="page"
+            >Settings</a
+          >
+        </li>
+      </ul>
+      <div class="navbar__actions">
+        <button
+          class="navbar__icon-btn"
+          id="navbar-darkmode-btn"
+          aria-pressed="false"
+          title="Mode gelap"
+          aria-label="Toggle mode gelap"
+        >
+          <svg
+            class="icon-moon"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <svg
+            class="icon-sun"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+            style="display: none"
+          >
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+        </button>
+        <button class="navbar__icon-btn" aria-label="Notifikasi">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+        </button>
+        <button class="navbar__avatar" aria-label="Profil pengguna"></button>
+      </div>
+    </nav>
+
+    <!-- BG BLOBS -->
+    <div class="bg-blob bg-blob--green" aria-hidden="true"></div>
+    <div class="bg-blob bg-blob--pink" aria-hidden="true"></div>
+
+    <!-- PAGE -->
+    <div class="sett-page">
+      <!-- Page heading -->
+      <div class="sett-page__heading">
+        <h1 class="sett-page__title">Pengaturan Tema</h1>
+        <p class="sett-page__sub">
+          Sesuaikan tampilan MochiFocus agar sesuai dengan suasana hatimu ✨
+        </p>
+      </div>
+
+      <!-- Two-column layout -->
+      <div class="sett-layout">
+        <!-- ── LEFT: Sidebar nav ── -->
+        <aside class="sett-sidebar" aria-label="Menu pengaturan">
+          <ul class="sett-nav" role="list">
+            <li>
+              <button
+                class="sett-nav__item"
+                data-section="profil"
+                aria-pressed="false"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                Profil
+              </button>
+            </li>
+            <li>
+              <button
+                class="sett-nav__item"
+                data-section="notifikasi"
+                aria-pressed="false"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+                Notifikasi
+              </button>
+            </li>
+            <li>
+              <button
+                class="sett-nav__item sett-nav__item--active"
+                data-section="tampilan"
+                aria-pressed="true"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="3" />
+                  <path
+                    d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"
+                  />
+                </svg>
+                Tampilan
+              </button>
+            </li>
+            <li>
+              <button
+                class="sett-nav__item"
+                data-section="akun"
+                aria-pressed="false"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="11" width="18" height="11" rx="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+                Akun
+              </button>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- ── RIGHT: Content panels ── -->
+        <div class="sett-content">
+          <!-- ════ TAMPILAN (active by default) ════ -->
+          <section
+            class="sett-panel sett-panel--active"
+            id="panel-tampilan"
+            aria-label="Pengaturan tampilan"
+          >
+            <!-- Theme preview -->
+            <div class="sett-card" id="preview-card">
+              <h2 class="sett-card__title">Pratinjau Tema</h2>
+              <div
+                class="theme-preview"
+                id="theme-preview"
+                aria-label="Pratinjau tema saat ini"
+              >
+                <div class="theme-preview__browser">
+                  <div class="theme-preview__dot"></div>
+                  <div class="theme-preview__bar"></div>
+                </div>
+                <div class="theme-preview__body">
+                  <div class="theme-preview__sidebar">
+                    <div
+                      class="theme-preview__line theme-preview__line--short"
+                    ></div>
+                    <div class="theme-preview__line"></div>
+                    <div class="theme-preview__line"></div>
+                    <div
+                      class="theme-preview__line theme-preview__line--short"
+                    ></div>
+                  </div>
+                  <div class="theme-preview__main">
+                    <div
+                      class="theme-preview__circle"
+                      id="preview-circle"
+                    ></div>
+                    <div
+                      class="theme-preview__line theme-preview__line--wide"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Theme palette -->
+            <div class="sett-card" id="palette-card">
+              <h2 class="sett-card__title">Koleksi Tema Pastel</h2>
+              <div
+                class="theme-palette"
+                id="theme-palette"
+                role="radiogroup"
+                aria-label="Pilih tema warna"
+              >
+                <button
+                  class="theme-swatch theme-swatch--active"
+                  data-theme="pastel-dreamland"
+                  style="--swatch-bg: #f5c6c6; --swatch-accent: #e8a4a4"
+                  aria-pressed="true"
+                  aria-label="Pastel Dreamland"
+                >
+                  <div class="theme-swatch__bg"></div>
+                  <span class="theme-swatch__name">PASTEL DREAMLAND</span>
+                  <span class="theme-swatch__tag">AKTIF</span>
+                </button>
+
+                <button
+                  class="theme-swatch"
+                  data-theme="minty-fresh"
+                  style="--swatch-bg: #a8d8b8; --swatch-accent: #6ec99a"
+                  aria-pressed="false"
+                  aria-label="Minty Fresh"
+                >
+                  <div class="theme-swatch__bg"></div>
+                  <span class="theme-swatch__name">MINTY FRESH</span>
+                </button>
+
+                <button
+                  class="theme-swatch"
+                  data-theme="lavender-sky"
+                  style="--swatch-bg: #c8b8e8; --swatch-accent: #a888c8"
+                  aria-pressed="false"
+                  aria-label="Lavender Sky"
+                >
+                  <div class="theme-swatch__bg"></div>
+                  <span class="theme-swatch__name">LAVENDER SKY</span>
+                </button>
+
+                <button
+                  class="theme-swatch"
+                  data-theme="lemon-sorbet"
+                  style="--swatch-bg: #f0e0a0; --swatch-accent: #e0c860"
+                  aria-pressed="false"
+                  aria-label="Lemon Sorbet"
+                >
+                  <div class="theme-swatch__bg"></div>
+                  <span class="theme-swatch__name">LEMON SORBET</span>
+                </button>
+
+                <button
+                  class="theme-swatch"
+                  data-theme="cloudy-blue"
+                  style="--swatch-bg: #b8cce8; --swatch-accent: #88aad8"
+                  aria-pressed="false"
+                  aria-label="Cloudy Blue"
+                >
+                  <div class="theme-swatch__bg"></div>
+                  <span class="theme-swatch__name">CLOUDY BLUE</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Brightness + dark mode -->
+            <div class="sett-card">
+              <div class="sett-row sett-row--col">
+                <div class="sett-row__label-row">
+                  <span class="sett-row__label">Kecerahan Antarmuka</span>
+                  <span class="sett-row__value" id="brightness-value">80%</span>
+                </div>
+                <input
+                  class="sett-slider"
+                  type="range"
+                  id="brightness-slider"
+                  min="40"
+                  max="100"
+                  value="80"
+                  aria-label="Kecerahan antarmuka"
+                  aria-valuemin="40"
+                  aria-valuemax="100"
+                  aria-valuenow="80"
+                />
+              </div>
+              <div class="sett-divider"></div>
+              <div class="sett-row">
+                <div class="sett-row__icon sett-row__icon--green">
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                  </svg>
+                </div>
+                <span class="sett-row__label">Mode Gelap Otomatis</span>
+                <label class="sett-toggle" aria-label="Mode gelap otomatis">
+                  <input type="checkbox" id="dark-mode-toggle" role="switch" />
+                  <span class="sett-toggle__track"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Font -->
+            <div class="sett-card">
+              <h2 class="sett-card__title">Gaya Huruf</h2>
+              <div
+                class="font-picker"
+                id="font-picker"
+                role="radiogroup"
+                aria-label="Pilih gaya huruf"
+              >
+                <button
+                  class="font-btn font-btn--active"
+                  data-font="Plus Jakarta Sans"
+                  aria-pressed="true"
+                >
+                  Quicksand
+                </button>
+                <button
+                  class="font-btn"
+                  data-font="Nunito"
+                  aria-pressed="false"
+                >
+                  Nunito
+                </button>
+                <button
+                  class="font-btn"
+                  data-font="Comic Neue"
+                  aria-pressed="false"
+                >
+                  Comic Sans
+                </button>
+              </div>
+            </div>
+
+            <!-- Visual effects -->
+            <div class="sett-card">
+              <h2 class="sett-card__title">Efek Visual</h2>
+              <div class="sett-row">
+                <span class="sett-row__label">Animasi Halus</span>
+                <label class="sett-toggle" aria-label="Animasi halus">
+                  <input
+                    type="checkbox"
+                    id="anim-toggle"
+                    role="switch"
+                    checked
+                  />
+                  <span
+                    class="sett-toggle__track sett-toggle__track--on"
+                  ></span>
+                </label>
+              </div>
+              <div class="sett-divider"></div>
+              <div class="sett-row">
+                <span class="sett-row__label">Partikel Kilauan</span>
+                <label class="sett-toggle" aria-label="Partikel kilauan">
+                  <input type="checkbox" id="particle-toggle" role="switch" />
+                  <span class="sett-toggle__track"></span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- ════ PROFIL ════ -->
+          <section
+            class="sett-panel"
+            id="panel-profil"
+            aria-label="Pengaturan profil"
+            hidden
+          >
+            <div class="sett-card">
+              <h2 class="sett-card__title">Profil Saya</h2>
+              <div class="sett-profile">
+                <div
+                  class="sett-profile__avatar"
+                  aria-label="Avatar profil"
+                ></div>
+                <div class="sett-profile__fields">
+                  <div class="sett-field">
+                    <label class="sett-field__label" for="profile-name"
+                      >Nama</label
+                    >
+                    <input
+                      class="input"
+                      type="text"
+                      id="profile-name"
+                      placeholder="Nama kamu"
+                      autocomplete="name"
+                    />
+                  </div>
+                  <div class="sett-field">
+                    <label class="sett-field__label" for="profile-email"
+                      >Email</label
+                    >
+                    <input
+                      class="input"
+                      type="email"
+                      id="profile-email"
+                      placeholder="email@contoh.com"
+                      autocomplete="email"
+                    />
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn--add-todo sett-save-btn" id="save-profile">
+                Simpan Profil
+              </button>
+            </div>
+          </section>
+
+          <!-- ════ NOTIFIKASI ════ -->
+          <section
+            class="sett-panel"
+            id="panel-notifikasi"
+            aria-label="Pengaturan notifikasi"
+            hidden
+          >
+            <div class="sett-card">
+              <h2 class="sett-card__title">Notifikasi</h2>
+
+              <div class="sett-row">
+                <span class="sett-row__label">Notifikasi Timer Selesai</span>
+                <label
+                  class="sett-toggle"
+                  aria-label="Notifikasi timer selesai"
+                >
+                  <input
+                    type="checkbox"
+                    id="notif-timer"
+                    role="switch"
+                    checked
+                  />
+                  <span
+                    class="sett-toggle__track sett-toggle__track--on"
+                  ></span>
+                </label>
+              </div>
+              <div class="sett-divider"></div>
+              <div class="sett-row">
+                <span class="sett-row__label">Pengingat Tugas Harian</span>
+                <label class="sett-toggle" aria-label="Pengingat tugas harian">
+                  <input
+                    type="checkbox"
+                    id="notif-daily"
+                    role="switch"
+                    checked
+                  />
+                  <span
+                    class="sett-toggle__track sett-toggle__track--on"
+                  ></span>
+                </label>
+              </div>
+              <div class="sett-divider"></div>
+              <div class="sett-row">
+                <span class="sett-row__label">Notifikasi Pencapaian Baru</span>
+                <label class="sett-toggle" aria-label="Notifikasi pencapaian">
+                  <input type="checkbox" id="notif-achieve" role="switch" />
+                  <span class="sett-toggle__track"></span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- ════ AKUN ════ -->
+          <section
+            class="sett-panel"
+            id="panel-akun"
+            aria-label="Pengaturan akun"
+            hidden
+          >
+            <div class="sett-card">
+              <h2 class="sett-card__title">Akun</h2>
+
+              <div class="sett-row sett-row--danger">
+                <div>
+                  <span class="sett-row__label">Hapus Semua Data</span>
+                  <p class="sett-row__desc">
+                    Reset semua tugas, tautan, dan preferensi ke awal.
+                  </p>
+                </div>
+                <button class="btn sett-danger-btn" id="clear-data-btn">
+                  Hapus Data
+                </button>
+              </div>
+              <div class="sett-divider"></div>
+              <div class="sett-row">
+                <div>
+                  <span class="sett-row__label">Versi Aplikasi</span>
+                  <p class="sett-row__desc">MochiFocus v1.0.0</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- /sett-content -->
+      </div>
+      <!-- /sett-layout -->
+    </div>
+    <!-- /sett-page -->
+
+    <!-- Toast notification -->
+    <div
+      class="sett-toast"
+      id="sett-toast"
+      role="status"
+      aria-live="polite"
+      aria-hidden="true"
+    ></div>
+
+    <script src="js/settings.js"></script>
+  </body>
+</html>
